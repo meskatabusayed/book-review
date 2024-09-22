@@ -1,9 +1,22 @@
+import { getAllPosts } from '@/services/PostServices'
+
 import React from 'react'
 
-const CreatePostPage = () => {
-    const handleCreatePost = async () => {
+const CreatePostPage = async() => {
+
+    
+
+    const handleCreatePost = async (fromData : FormData) => {
         "use server"
-        console.log("hello")
+        const posts = await getAllPosts();
+        const data = {
+            id : JSON.stringify(posts.length +1),
+            name : fromData.get("name"),
+            description : fromData.get("description"),
+            category : fromData.get("category"),
+            image : fromData.get("image")
+        }
+        console.log(data)
 
     }
   return (
@@ -17,6 +30,7 @@ const CreatePostPage = () => {
           <span className="label-text">Book Name</span>
         </label>
         <input
+          name='name'
           type="text"
           placeholder="Book Name"
           className="input input-bordered"
@@ -29,6 +43,7 @@ const CreatePostPage = () => {
           <span className="label-text">Description</span>
         </label>
         <textarea
+         name='description'
           placeholder="Description"
           className="textarea textarea-bordered"
           required
@@ -40,6 +55,7 @@ const CreatePostPage = () => {
           <span className="label-text">Category</span>
         </label>
         <input
+         name='category'
           type="text"
           placeholder="Fantasy, Fiction, etc."
           className="input input-bordered"
@@ -52,6 +68,7 @@ const CreatePostPage = () => {
           <span className="label-text">Image URL</span>
         </label>
         <input
+        name='image'
           type="url"
           placeholder="Image URL"
           className="input input-bordered"
