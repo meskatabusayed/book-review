@@ -62,6 +62,13 @@
       "description": "The first book in the Harry Potter series, where Harry discovers he's a wizard and attends Hogwarts School of Witchcraft and Wizardry.",
       "category": "Fantasy",
       "image": "https://images.moviesanywhere.com/143cdb987186a1c8f94d4f18de211216/fdea56fa-2703-47c1-8da8-70fc5382e1ea.jpg"
+    },
+    {
+      "id": "10",
+      "name": "test",
+      "description": "test",
+      "category": "test",
+      "image": "https://chatgpt.com/c/66efebb9-32ac-8009-9b39-44778094a894"
     }
   ],
   "comments": [

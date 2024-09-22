@@ -1,4 +1,6 @@
-import { getAllPosts } from '@/services/PostServices'
+import { createPost, getAllPosts } from '@/services/PostServices'
+import { TPost } from '@/types'
+import { revalidateTag } from 'next/cache'
 
 import React from 'react'
 
@@ -16,8 +18,11 @@ const CreatePostPage = async() => {
             category : fromData.get("category"),
             image : fromData.get("image")
         }
-        console.log(data)
-
+        const res = await createPost(data as TPost);
+        if(res){
+            revalidateTag("posts");
+            console.log("Post created successfully")
+        }
     }
   return (
     <div className=" shadow-xl bg-base-100 w-[80%] my-12">
